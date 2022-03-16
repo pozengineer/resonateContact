@@ -1,8 +1,4 @@
 .card {
-    display: grid;
-    grid-template-columns: 5% 20% 15% 15% 15% 30%;
-    grid-template-rows: 150px;
-    grid-gap: 2px;
     align-items: center;
     text-align: center;
     vertical-align: middle;

@@ -1,22 +1,29 @@
 import React from "react";
+import Jumbotron from "../../components/Jumbotron";
+import { Row, Container } from "../../components/Grid";
+import { ContactCard } from '../Contacts';
+import { Card, Col } from 'react-bootstrap';
 import "./style.css";
-import Card from '../Card';
 
 class ListHeader extends React.Component {
-
     state = {
         alphabetical: true,
         ascending: true,
         sortedEmployees: [],
-        employees: []
+        employees: [],
+        matches: window.matchMedia("(min-width: 992px)").matches
     }
 
     componentDidMount() {
+        const handler = e => this.setState({ matches: e.matches });
+        window.matchMedia("(min-width: 768px)").addListener(handler);
+
         if (this.state.sortedEmployees.length < 1) {
             this.setState({
                 sortedEmployees: this.props.empList
             })
         }
+        
     }
 
     componentDidUpdate(prevProps) {
@@ -85,33 +92,29 @@ class ListHeader extends React.Component {
 
     render() {
         return (
-
-            <div>
-                <div className="header">
-                    <div><p onClick={this.sortId} className="id">Id</p></div>
-                    <div><p onClick={this.sortName} className="name">Name</p> </div>
-                    <div>Company</div>
-                    <div>City</div>
-                    <div>Phone No.</div>
-                    <div>Email</div>
+            <Container fluid>
+            <Jumbotron>
+                <div className='pageTitleContainer'>
+                    {this.state.matches && <h1>Contacts On My List</h1>}
+                    {!this.state.matches && <h5>Contacts On My List</h5>}
                 </div>
-
-                {
-                    this.state.sortedEmployees.length > 0 &&
-                    this.state.sortedEmployees.map((item, index) => (
-
-                        <Card 
-                            key={index}
-                            id={item.id}
-                            name={item.name}
-                            company={item.company.name}
-                            city={item.address.city}
-                            phone={item.phone}
-                            email={item.email}
-                        />
-                    ))
+            </Jumbotron>
+            <Row>
+                <Col className='header'>
+                    <Card.Title onClick={this.sortName} className="nameHeading">Name</Card.Title>
+                </Col>
+            </Row>
+            <Row>
+                {this.state.sortedEmployees && this.state.sortedEmployees.length &&
+                    this.state.sortedEmployees.map((contact, index) => {
+                        return (
+                            <ContactCard key={contact.id} contact={contact} />
+                        );
+                    })
                 }
-            </div>
+                {this.state.sortedEmployees && !this.state.sortedEmployees.length && <h5>No Contacts to Display</h5>}
+            </Row>
+        </Container>
         );
     }
 }

@@ -1,0 +1,19 @@
+#mainContent {
+    /* background-color: #efeee7; */
+    background: #eeeeee;
+    margin: 0;
+    /* padding-top: 30px; */
+    padding-bottom: 100px;
+}
+
+.projectColumn {
+    padding: 10px !important;
+}
+
+.contactModal {
+    background-color: #eeffff;
+}
+
+.infoButton {
+    margin-top: 10px;
+}

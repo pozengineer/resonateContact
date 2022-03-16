@@ -3,6 +3,7 @@ import './App.css';
 import axios from "axios";
 import SiteHead from './components/SiteHead';
 import Navbar from './components/Navbar';
+import { BrowserRouter as Router } from "react-router-dom";
 
 class App extends React.Component {
 
@@ -22,12 +23,14 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="App">
-                <SiteHead />
-                {this.state.employees.length > 0 &&
+            <Router>
+                <div className="App">
+                    <SiteHead />
+                    {this.state.employees.length > 0 &&
                     <Navbar employees={this.state.employees} />
-                }
-            </div>
+                    }
+                </div>
+            </Router>
         );
     }
 }
