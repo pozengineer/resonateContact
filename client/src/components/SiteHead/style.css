@@ -1,0 +1,25 @@
+.wrapper {
+    /* height: 200px; */
+    background-color: #5c6bc0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    vertical-align: middle;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    font-weight: bolder;
+    color: #ffffff;
+}
+
+.tagline {
+    font-size: large;
+    /* font-weight: bold; */
+    color: #ffffff;
+}

@@ -1,0 +1,11 @@
+.form {
+    border: 1px;
+    border-color: black;
+    background-color: #26418f;
+    padding-top: 15px;
+}
+
+input {
+    height: 20px;
+    font-size: 15px;
+}
